@@ -14,16 +14,17 @@ public class TodoistMain_DeleteProject {
     @Before
     public void setUp(){
         todoistMain = LoginFrame.loginAS("rosi_15_27@hotmail.com", "P4ssw0rd");
-    }
-
-    @Test
-    public void testNewProject(){
-        todoistMain.swithDefault();
+	todoistMain.swithDefault();
         todoistMain.newProject();
         String projectName = "test project";
         todoistMain.setProjectNameTextField(projectName);
         todoistMain = todoistMain.clickAddProjectButton();
-        Assert.assertEquals(projectName, todoistMain.getProjectNameTitle());
+
+    }
+
+    @Test
+    public void testNewProject(){
+        
 
     }
 
