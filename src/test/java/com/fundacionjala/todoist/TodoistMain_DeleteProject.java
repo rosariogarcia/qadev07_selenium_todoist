@@ -1,35 +1,35 @@
 package com.fundacionjala.todoist;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.testng.Assert;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by RosarioGarcia on 6/20/2016.
  */
 public class TodoistMain_DeleteProject {
-    private TodoistHome todoistHome;
-    private TodoistMain todoistMain;
+    private Sidebar sidebar;
+    private ProjectContainer projectContainer;
+    private String projectName;
     @Before
-    public void setUp(){
-        todoistMain = LoginFrame.loginAS("rosi_15_27@hotmail.com", "P4ssw0rd");
-	todoistMain.swithDefault();
-        todoistMain.newProject();
-        String projectName = "test project";
-        todoistMain.setProjectNameTextField(projectName);
-        todoistMain = todoistMain.clickAddProjectButton();
-
+    public void setUp() {
+        final String email = "rosi_15_27@hotmail.com";
+        final String p4ssw0rd = "P4ssw0rd";
+        sidebar = LoginFrame.loginAS(email, p4ssw0rd);
+        sidebar.switchDefault();
+        sidebar.newProject();
+        projectName = "test project";
+        sidebar.setProjectNameTextField(projectName);
+        projectContainer = sidebar.clickAddProjectButton();
+        sidebar.searchProjectCreated(projectName);
+        sidebar.clickOnMenuProject();
     }
 
     @Test
-    public void testNewProject(){
-        
-
-    }
-
-    @After
-    public void postCondition(){
-
+    public void testEditProject(){
+        sidebar.clickOnDeletProjectOption();
+        projectContainer = sidebar.confirmDeleteProject();
+        assertEquals("", projectContainer.getEditorContainer());
     }
 }

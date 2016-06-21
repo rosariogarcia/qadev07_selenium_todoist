@@ -14,7 +14,7 @@ public abstract class BasePage {
         driver = DriverManager.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
-     public void swithDefault(){
+     public void switchDefault(){
          driver.switchTo().defaultContent();
      }
 }

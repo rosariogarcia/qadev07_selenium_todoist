@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by RosarioGarcia on 6/20/2016.
  */
-public class TodoisMain_NewProjectTest {
+public class ProjectContainer_AddTask {
     private TodoistHome todoistHome;
     private Sidebar sidebar;
     private ProjectContainer projectContainer;
@@ -19,15 +19,21 @@ public class TodoisMain_NewProjectTest {
         final String email = "rosi_15_27@hotmail.com";
         final String p4ssw0rd = "P4ssw0rd";
         sidebar = LoginFrame.loginAS(email, p4ssw0rd);
+        sidebar.switchDefault();
+        sidebar.newProject();
+        sidebar.setProjectNameTextField(projectName);
+        sidebar.clickAddProjectButton();
+
     }
 
     @Test
     public void testNewProject(){
-        sidebar.switchDefault();
-        sidebar.newProject();
-        sidebar.setProjectNameTextField(projectName);
-        projectContainer = sidebar.clickAddProjectButton();
-        assertEquals(projectName, projectContainer.getProjectNameTitle());
+        projectContainer = new ProjectContainer();
+        projectContainer.clickOnAddTask();
+        String taskName = "task Container";
+        projectContainer.setTaskNameTextField(taskName);
+        projectContainer.clickOnAddTaskButton();
+        assertEquals("The task name is different", taskName, projectContainer.getTaskName());
     }
 
     @After

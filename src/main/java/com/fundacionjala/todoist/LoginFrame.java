@@ -27,21 +27,24 @@ public class LoginFrame extends BasePage{
         passwordTextField.sendKeys(password);
     }
 
-    public TodoistMain clickLogInButton() {
+    //modify too
+    public Sidebar clickLogInButton() {
         logInButton.click();
-        return new TodoistMain();
+        return new Sidebar();
     }
 
-    public static TodoistMain loginAS(String email, String password){
+    //modify here with assert email account
+
+    public static Sidebar loginAS(String email, String password){
         TodoistHome todoistHome = new TodoistHome();
-        TodoistMain todoistMain = new TodoistMain();
-        if (!todoistMain.getFilterInbox().equals("Inbox")){
+        Sidebar sidebar = new Sidebar();
+        if (!sidebar.getFilterInbox().equals("Inbox")){
             //todoistMain.logOut();
             LoginFrame login = todoistHome.clickSigInLink();
             login.setEmailTextField(email);
             login.setPasswordTextField(password);
             return login.clickLogInButton();
         }
-        return todoistMain;
+        return sidebar;
     }
 }

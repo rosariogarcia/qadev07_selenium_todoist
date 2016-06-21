@@ -6,19 +6,22 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by RosarioGarcia on 6/20/2016.
+ * @author RosarioGarcia.
  */
 public class LoginFrameTest {
 
     private TodoistHome todoistHome;
-    private TodoistMain todoistMain;
+    private Sidebar sidebar;
+
     @Before
-    public void setUp(){
-        todoistMain = LoginFrame.loginAS("rosi_15_27@hotmail.com", "P4ssw0rd");
+    public void setUp() {
+        final String email = "rosi_15_27@hotmail.com";
+        final String p4ssw0rd = "P4ssw0rd";
+        sidebar = LoginFrame.loginAS(email, p4ssw0rd);
     }
 
     @Test
     public void testLogin() {
-       assertEquals("Inbox", todoistMain.getFilterInbox());
+        assertEquals("Inbox is not displayed","Inbox", sidebar.getFilterInbox());
     }
 }
