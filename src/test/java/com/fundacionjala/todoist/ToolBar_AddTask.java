@@ -10,11 +10,12 @@ import static org.junit.Assert.assertEquals;
  * Created by Charito on 6/21/2016.
  */
 public class ToolBar_AddTask {
-    private TodoistHome todoistHome;
+
     private Sidebar sidebar;
     private ProjectContainer projectContainer;
     String projectName = "test project";
     private Toolbar toolbar;
+
     @Before
     public void setUp(){
         final String email = "rosi_15_27@hotmail.com";
@@ -27,12 +28,14 @@ public class ToolBar_AddTask {
     }
 
     @Test
-    public void testNewProject(){
+    public void testNewTaskFromToolBar(){
         toolbar = new Toolbar();
-        toolbar.clickAddTaskIcon();
+        QuickAddTask quickAddTask;
+        quickAddTask = toolbar.clickAddTaskIcon();
         String taskName = "task";
-        toolbar.setTaskName(taskName);
-        projectContainer = toolbar.clickOnAddTaskButton();
+        quickAddTask.setTaskNameTextField(taskName);
+        quickAddTask.setToPriorityOne();
+        projectContainer = quickAddTask.clickOnAddTaskButton();
         assertEquals("The task name is different", taskName, projectContainer.getTaskName());
     }
 

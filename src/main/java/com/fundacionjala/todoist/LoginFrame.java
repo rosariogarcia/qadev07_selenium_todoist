@@ -14,7 +14,7 @@ public class LoginFrame extends BasePage{
     @FindBy(id = "password")
     private WebElement passwordTextField;
 
-    @FindBy(xpath = ".//*[@id='login_form']/dl/dd[3]/a")
+    @FindBy(xpath = ".//*[@id='login_form']/dl/dd[3]/a")//review
     private WebElement logInButton;
 
     public void setEmailTextField(String email) {

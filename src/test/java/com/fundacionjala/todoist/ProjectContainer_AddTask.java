@@ -23,16 +23,17 @@ public class ProjectContainer_AddTask {
         sidebar.newProject();
         sidebar.setProjectNameTextField(projectName);
         sidebar.clickAddProjectButton();
-
     }
 
     @Test
-    public void testNewProject(){
+    public void testNewTaskFromContainer(){
         projectContainer = new ProjectContainer();
-        projectContainer.clickOnAddTask();
+        TaskWindow taskWindow;
+        taskWindow = projectContainer.clickOnAddTask();
         String taskName = "task Container";
-        projectContainer.setTaskNameTextField(taskName);
-        projectContainer.clickOnAddTaskButton();
+        taskWindow.setTaskNameTextField(taskName);
+        taskWindow.setToPriorityOne();
+        projectContainer = taskWindow.clickOnAddTaskButton();
         assertEquals("The task name is different", taskName, projectContainer.getTaskName());
     }
 
