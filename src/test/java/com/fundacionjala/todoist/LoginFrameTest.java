@@ -15,9 +15,7 @@ public class LoginFrameTest {
 
     @Before
     public void setUp() {
-        final String email = "rosi_15_27@hotmail.com";
-        final String p4ssw0rd = "P4ssw0rd";
-        sidebar = LoginFrame.loginAS(email, p4ssw0rd);
+        sidebar = LoginFrame.loginAsPrimaryUser();
     }
 
     @Test

@@ -52,4 +52,10 @@ public class LoginFrame extends BasePage{
         }
         return sidebar;
     }
+
+    public static Sidebar loginAsPrimaryUser(){
+        final String email = "rosi_15_27@hotmail.com";
+        final String p4ssw0rd = "P4ssw0rd";
+        return LoginFrame.loginAS(email, p4ssw0rd);
+    }
 }
