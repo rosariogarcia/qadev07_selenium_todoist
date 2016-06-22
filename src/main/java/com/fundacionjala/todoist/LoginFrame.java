@@ -2,6 +2,8 @@ package com.fundacionjala.todoist;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by RosarioGarcia on 6/20/2016.
@@ -14,12 +16,16 @@ public class LoginFrame extends BasePage{
     @FindBy(id = "password")
     private WebElement passwordTextField;
 
-    @FindBy(xpath = ".//*[@id='login_form']/dl/dd[3]/a")//review
+    @FindBy(css = ".amibutton.amibutton_red.sel_login")
     private WebElement logInButton;
 
     public void setEmailTextField(String email) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOf(emailTextField));
         emailTextField.clear();
         emailTextField.sendKeys(email);
+
+
     }
 
     public void setPasswordTextField(String password) {
@@ -39,7 +45,6 @@ public class LoginFrame extends BasePage{
         TodoistHome todoistHome = new TodoistHome();
         Sidebar sidebar = new Sidebar();
         if (!sidebar.getFilterInbox().equals("Inbox")){
-            //todoistMain.logOut();
             LoginFrame login = todoistHome.clickSigInLink();
             login.setEmailTextField(email);
             login.setPasswordTextField(password);
