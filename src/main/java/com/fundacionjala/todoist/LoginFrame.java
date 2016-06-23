@@ -24,8 +24,6 @@ public class LoginFrame extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(emailTextField));
         emailTextField.clear();
         emailTextField.sendKeys(email);
-
-
     }
 
     public void setPasswordTextField(String password) {
@@ -33,13 +31,10 @@ public class LoginFrame extends BasePage{
         passwordTextField.sendKeys(password);
     }
 
-    //modify too
     public Sidebar clickLogInButton() {
         logInButton.click();
         return new Sidebar();
     }
-
-    //modify here with assert email account
 
     public static Sidebar loginAS(String email, String password){
         TodoistHome todoistHome = new TodoistHome();
@@ -48,14 +43,17 @@ public class LoginFrame extends BasePage{
             LoginFrame login = todoistHome.clickSigInLink();
             login.setEmailTextField(email);
             login.setPasswordTextField(password);
+
             return login.clickLogInButton();
         }
         return sidebar;
     }
 
     public static Sidebar loginAsPrimaryUser(){
-        final String email = "rosi_15_27@hotmail.com";
-        final String p4ssw0rd = "P4ssw0rd";
+        PropInfo properties = new PropInfo();
+
+        final String email = properties.getEmail();
+        final String p4ssw0rd = properties.getPassword();
         return LoginFrame.loginAS(email, p4ssw0rd);
     }
 }
