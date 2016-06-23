@@ -43,17 +43,13 @@ public class LoginFrame extends BasePage{
             LoginFrame login = todoistHome.clickSigInLink();
             login.setEmailTextField(email);
             login.setPasswordTextField(password);
-
             return login.clickLogInButton();
         }
         return sidebar;
     }
 
     public static Sidebar loginAsPrimaryUser(){
-        PropInfo properties = new PropInfo();
-
-        final String email = properties.getEmail();
-        final String p4ssw0rd = properties.getPassword();
-        return LoginFrame.loginAS(email, p4ssw0rd);
+        return LoginFrame.loginAS(PropertiesInfo.getInstance().getEmail(),
+                PropertiesInfo.getInstance().getPassword());
     }
 }

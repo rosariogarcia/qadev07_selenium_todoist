@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
  */
 public class TodoistHome extends BasePage {
 
-    private static final String TODOIST_URL = "https://todoist.com/";
-
     @FindBy(className = "sel_login")
     private WebElement signInLink;
 
@@ -19,9 +17,8 @@ public class TodoistHome extends BasePage {
     @FindBy(id = "GB_frame")
     private WebElement loginIFrame;
 
-
     public TodoistHome() {
-        driver.get(TODOIST_URL);
+        driver.get(PropertiesInfo.getInstance().getUrl());
     }
 
     public LoginFrame clickSigInLink() {
