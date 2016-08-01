@@ -49,6 +49,6 @@ public class PropertiesInfo {
     }
 
     public String getUrl() {
-        return getProperty("email");
+        return getProperty("url");
     }
 }
